@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배꼽시계 API 명세서</title>
+</head>
+<body>
+
+<h1>배꼽시계 API 명세서</h1>
+
+<details>
+    <summary> Store API 명세서 </summary>
+    <h2>기본 정보</h2>
+    <ul>
+        <li><strong>Base URL</strong>: /store</li>
+        <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+    </ul>
+
+    <h2>목차</h2>
+    <ul>
+        <li><a href="#1-get-getall">1. GET /getAll</a> - 모든 가게 조회</li>
+        <li><a href="#2-get-search">2. GET /search</a> - 가게 검색</li>
+        <li><a href="#3-get-storeidtables">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
+        <li><a href="#4-get-storeidorders">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
+        <li><a href="#5-get-tableidorders">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
+        <li><a href="#6-get-storeidmenus">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
+        <li><a href="#7-get-storeid">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
+        <li><a href="#8-post-storeidtables">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
+        <li><a href="#9-post-storeidmenu-categories">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
+        <li><a href="#10-post-menucateidmenus">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
+        <li><a href="#11-post-menuidmenu-options">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
+    </ul>
+
+    <hr>
+
+    <details>
+        <summary>1. GET /getAll</summary>
+        <h3>설명</h3>
+        <p>모든 가게 정보를 조회합니다.</p>
+        <h4>Request</h4>
+        <p>없음</p>
+        <h4>Response</h4>
+        <pre><code>{
+  "id": "string",
+  "name": "string",
+  "address": "string",
+  "lat": "string",
+  "long": "string",
+  "tel": "string",
+  "createdAt": "date-time",
+  "updatedAt": "date-time"
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Internal server error"
+}</code></pre>
+    </details>
+
+    <hr>
+
+    <details>
+        <summary>2. GET /search</summary>
+        <h3>설명</h3>
+        <p>가게 이름 또는 주소로 검색합니다.</p>
+        <h4>Request</h4>
+        <p>Query Parameters:</p>
+        <pre><code>query: 검색어 (string, 필수)</code></pre>
+        <h4>Response</h4>
+        <pre><code>{
+  "id": "string",
+  "name": "string",
+  "address": "string",
+  "lat": "string",
+  "long": "string",
+  "tel": "string",
+  "createdAt": "date-time",
+  "updatedAt": "date-time"
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Invalid query parameter"
+}</code></pre>
+    </details>
+
+    <hr>
+
+    <details>
+        <summary>3. GET /:storeId/tables</summary>
+        <h3>설명</h3>
+        <p>특정 가게의 테이블 정보 및 관련 미결제 주문 조회</p>
+        <h4>Request</h4>
+        <p>Path Parameters:</p>
+        <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
+        <h4>Response</h4>
+        <pre><code>{
+  "id": "string",
+  "spaces": [
+    {
+      "id": "string",
+      "name": "string",
+      "tables": [
+        {
+          "id": "string",
+          "name": "string",
+          "orders": [
+            {
+              "id": "string",
+              "isPaid": "N",
+              "orderDetails": [
+                {
+                  "id": "string",
+                  "menu": {
+                    "id": "string",
+                    "name": "string"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Store not found"
+}</code></pre>
+    </details>
+
+    <!-- Rest of the API entries follow the same structure -->
+
+</details>
+
+<hr>
+
+<details>
+    <summary> Table Order API 명세서 </summary>
+    <h2>기본 정보</h2>
+    <ul>
+        <li><strong>Base URL</strong>: /order</li>
+        <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+    </ul>
+
+    <h2>목차</h2>
+    <ul>
+        <li><a href="#1-get-tableid">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 정보 조회</li>
+        <li><a href="#2-post-tableid">2. POST /:tableId</a> - 특정 테이블에 주문 추가</li>
+    </ul>
+
+    <hr>
+
+    <details>
+        <summary>1. GET /:tableId</summary>
+        <h3>설명</h3>
+        <p>특정 테이블의 미결제 주문 정보를 조회합니다.</p>
+        <h4>Request</h4>
+        <p>Path Parameters:</p>
+        <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
+        <h4>Response</h4>
+        <pre><code>[
+  {
+    "id": "string",
+    "isPaid": "N",
+    "orderDetails": [
+      {
+        "id": "string",
+        "quantity": 1,
+        "menu": {
+          "id": "string",
+          "name": "string"
+        },
+        "menuOption": {
+          "id": "string",
+          "name": "string"
+        },
+        "menuOptionItem": {
+          "id": "string",
+          "name": "string"
+        }
+      }
+    ]
+  }
+]</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Table not found"
+}</code></pre>
+    </details>
+
+    <hr>
+
+    <details>
+        <summary>2. POST /:tableId</summary>
+        <h3>설명</h3>
+        <p>특정 테이블에 주문을 추가합니다.</p>
+        <h4>Request</h4>
+        <p>Path Parameters:</p>
+        <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
+        <h4>Body</h4>
+        <pre><code>[
+  {
+    "menuId": "string",
+    "quantity": 1
+  }
+]</code></pre>
+        <h4>Response</h4>
+        <pre><code>{
+  "message": "Order saved successfully"
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Table not found"
+}</code></pre>
+    </details>
+
+</details>
+
+<hr>
+
+<details>
+    <summary>Order Payment API 명세서</summary>
+    <h2>기본 정보</h2>
+    <ul>
+        <li><strong>Base URL</strong>: /payment</li>
+        <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+    </ul>
+
+    <h2>목차</h2>
+    <ul>
+        <li><a href="#1-put-orderid">1. PUT /:orderId</a> - 주문 결제 업데이트</li>
+    </ul>
+
+    <hr>
+
+    <details>
+        <summary>1. PUT /:orderId</summary>
+        <h3>설명</h3>
+        <p>특정 주문의 결제 상태를 "Y"로 업데이트합니다.</p>
+        <h4>Request</h4>
+        <p>Path Parameters:</p>
+        <pre><code>orderId: 주문 ID (string, 필수)</code></pre>
+        <h4>Response</h4>
+        <pre><code>{
+  "message": "Order payment updated successfully",
+  "order": {
+    "id": "string",
+    "isPaid": "Y"
+  }
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Order not found"
+}</code></pre>
+    </details>
+
+</details>
+
+<hr>
+
+<details>
+    <summary> Booking API 명세서 </summary>
+    <h2>기본 정보</h2>
+    <ul>
+        <li><strong>Base URL</strong>: /book</li>
+        <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+    </ul>
+
+    <h2>목차</h2>
+    <ul>
+        <li><a href="#1-post-storeid">1. POST /:storeId</a> - 예약 생성 및 업데이트</li>
+    </ul>
+
+    <hr>
+
+    <details>
+        <summary>1. POST /:storeId</summary>
+        <h3>설명</h3>
+        <p>특정 가게에 예약을 생성하거나 기존 예약을 업데이트합니다.</p>
+        <h4>Request</h4>
+        <p>Path Parameters:</p>
+        <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
+        <h4>Body</h4>
+        <pre><code>{
+  "id": "string",
+  "userEmail": "string",
+  "peopleCnt": 4,
+  "bookDate": "string",
+  "bookTime": "string"
+}</code></pre>
+        <h4>Response</h4>
+        <pre><code>{
+  "message": "Booking saved successfully"
+}</code></pre>
+        <h4>Error Responses</h4>
+        <pre><code>{
+  "error": "Failed to save Booking"
+}</code></pre>
+    </details>
+
+</details>
+
+</body>
+</html>
