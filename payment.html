@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment API Documentation</title>
-    <!-- Bootstrap CSS -->
+    <title>Payment API 문서</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS for code blocks -->
     <style>
         pre code {
             display: block;
@@ -32,24 +30,10 @@
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Payment API Documentation</h1>
+    <h1 class="text-center mb-4">Payment API 문서</h1>
 
-    <!-- Back to index button -->
     <div class="back-to-index">
         <a href="index.html" class="btn btn-secondary">Back to Index</a>
-    </div>
-
-    <!-- 기본 정보 -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h4>기본 정보</h4>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li><strong>Base URL</strong>: /payment</li>
-                <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
-            </ul>
-        </div>
     </div>
 
     <!-- 목차 -->
@@ -59,35 +43,34 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#updatePayment">1. PUT /:orderId</a> - 특정 주문의 결제 상태 업데이트</li>
+                <li><a href="#collapsePutOrderPayment">1. PUT /:orderId</a> - 주문 결제 상태 업데이트</li>
             </ul>
         </div>
     </div>
 
     <!-- Accordion for each API section -->
     <div class="accordion" id="apiAccordion">
-
         <!-- PUT /:orderId -->
         <div class="card">
-            <div class="card-header" id="updatePayment">
+            <div class="card-header" id="putOrderPayment">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseUpdatePayment" aria-expanded="true" aria-controls="collapseUpdatePayment">
-                        1. PUT /:orderId - 특정 주문의 결제 상태 업데이트
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapsePutOrderPayment" aria-expanded="false" aria-controls="collapsePutOrderPayment">
+                        1. PUT /:orderId - 주문 결제 상태 업데이트
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseUpdatePayment" class="collapse show" aria-labelledby="updatePayment" data-parent="#apiAccordion">
+            <div id="collapsePutOrderPayment" class="collapse" aria-labelledby="putOrderPayment" data-parent="#apiAccordion">
                 <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 주문의 결제 상태를 'Y'로 업데이트합니다.</h6>
+                    <h6><strong>설명</strong>: 특정 주문의 결제 상태를 "Y"로 업데이트합니다.</h6>
                     <h6>Request</h6>
                     <pre><code>orderId: 주문 ID (string, 필수)</code></pre>
                     <h6>Response</h6>
                     <pre><code>{
   "message": "Order payment updated successfully",
   "order": {
-    "id": "string",      // 주문 ID
-    "isPaid": "Y"        // 결제 여부 ('Y' 또는 'N')
+    "id": "string",
+    "isPaid": "Y"
   }
 }</code></pre>
                     <h6>Error Responses</h6>
@@ -108,32 +91,32 @@
 <!-- JavaScript to keep all accordion sections closed on load -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Find all elements with 'collapse' class and ensure they're collapsed
+        // 모든 collapse 요소를 찾고 접힌 상태로 유지
         const collapses = document.querySelectorAll('.collapse');
         collapses.forEach(collapse => {
-            collapse.classList.remove('show');  // Make sure they're collapsed
+            collapse.classList.remove('show');  // collapse 상태로 만들기
         });
-  
+
         const hash = window.location.hash;
-  
+
         if (hash) {
-            // Get the element by hash (e.g., #collapseGetAll)
+            // URL의 해시를 사용해 해당 섹션 열기
             const targetElement = document.querySelector(hash);
-  
+
             if (targetElement && targetElement.classList.contains('collapse')) {
-                // Open the collapse section
+                // 해당 섹션 열기
                 targetElement.classList.add('show');
                 
-                // Scroll to the opened section
+                // 해당 섹션으로 스크롤
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
     });
-  </script>
-  
-  <!-- Bootstrap JS, Popper.js, and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
-  </html>
+</script>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Order API Documentation</title>
-    <!-- Bootstrap CSS -->
+    <title>Order API 문서</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom CSS for code blocks -->
     <style>
         pre code {
             display: block;
@@ -32,24 +30,10 @@
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Order API Documentation</h1>
+    <h1 class="text-center mb-4">Order API 문서</h1>
 
-    <!-- Back to index button -->
     <div class="back-to-index">
         <a href="index.html" class="btn btn-secondary">Back to Index</a>
-    </div>
-
-    <!-- 기본 정보 -->
-    <div class="card mb-4">
-        <div class="card-header">
-            <h4>기본 정보</h4>
-        </div>
-        <div class="card-body">
-            <ul>
-                <li><strong>Base URL</strong>: /order</li>
-                <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
-            </ul>
-        </div>
     </div>
 
     <!-- 목차 -->
@@ -59,57 +43,46 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#getUnpaidOrders">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#postOrder">2. POST /:tableId</a> - 특정 테이블에 주문 추가</li>
+                <li><a href="#collapseGetTableOrders">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
+                <li><a href="#collapsePostTableOrders">2. POST /:tableId</a> - 테이블에 새로운 주문 추가</li>
             </ul>
         </div>
     </div>
 
     <!-- Accordion for each API section -->
     <div class="accordion" id="apiAccordion">
-
         <!-- GET /:tableId -->
         <div class="card">
-            <div class="card-header" id="getUnpaidOrders">
+            <div class="card-header" id="getTableOrders">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGetUnpaidOrders" aria-expanded="true" aria-controls="collapseGetUnpaidOrders">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGetTableOrders" aria-expanded="false" aria-controls="collapseGetTableOrders">
                         1. GET /:tableId - 특정 테이블의 미결제 주문 조회
                     </button>
                 </h5>
             </div>
 
-            <div id="collapseGetUnpaidOrders" class="collapse show" aria-labelledby="getUnpaidOrders" data-parent="#apiAccordion">
+            <div id="collapseGetTableOrders" class="collapse" aria-labelledby="getTableOrders" data-parent="#apiAccordion">
                 <div class="card-body">
                     <h6><strong>설명</strong>: 특정 테이블의 미결제 주문을 조회합니다.</h6>
                     <h6>Request</h6>
                     <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
                     <h6>Response</h6>
-                    <pre><code>[
-  {
-    "id": "string",                 // 주문 ID
-    "isPaid": "N",                  // 결제 여부 ('Y' 또는 'N')
-    "orderDetails": [
-      {
-        "id": "string",             // 주문 상세 ID
-        "menu": {
-          "id": "string",           // 메뉴 ID
-          "name": "string"          // 메뉴 이름
-        },
-        "menuOption": {
-          "id": "string",           // 메뉴 옵션 ID
-          "name": "string"          // 메뉴 옵션 이름
-        },
-        "menuOptionItem": {
-          "id": "string",           // 메뉴 옵션 항목 ID
-          "name": "string"          // 메뉴 옵션 항목 이름
-        }
+                    <pre><code>{
+  "id": "string",
+  "isPaid": "N",
+  "orderDetails": [
+    {
+      "id": "string",
+      "menu": {
+        "id": "string",
+        "name": "string"
       }
-    ]
-  }
-]</code></pre>
+    }
+  ]
+}</code></pre>
                     <h6>Error Responses</h6>
                     <pre><code>{
-  "error": "Table not found"
+  "error": "No active order found for this table"
 }</code></pre>
                     <pre><code>{
   "error": "Failed to retrieve unpaid orders for the table"
@@ -120,23 +93,24 @@
 
         <!-- POST /:tableId -->
         <div class="card">
-            <div class="card-header" id="postOrder">
+            <div class="card-header" id="postTableOrders">
                 <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostOrder" aria-expanded="false" aria-controls="collapsePostOrder">
-                        2. POST /:tableId - 특정 테이블에 주문 추가
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostTableOrders" aria-expanded="false" aria-controls="collapsePostTableOrders">
+                        2. POST /:tableId - 테이블에 새로운 주문 추가
                     </button>
                 </h5>
             </div>
-            <div id="collapsePostOrder" class="collapse" aria-labelledby="postOrder" data-parent="#apiAccordion">
+
+            <div id="collapsePostTableOrders" class="collapse" aria-labelledby="postTableOrders" data-parent="#apiAccordion">
                 <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 테이블에 새로운 주문을 추가하거나 기존 미결제 주문을 업데이트합니다.</h6>
+                    <h6><strong>설명</strong>: 특정 테이블에 주문을 추가합니다. 이 API는 테이블에 주문을 생성하거나, 이미 존재하는 미결제 주문의 세부사항을 업데이트합니다.</h6>
                     <h6>Request</h6>
                     <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
                     <h6>Body</h6>
                     <pre><code>[
   {
-    "menuId": "string",        // 메뉴 ID
-    "quantity": 1              // 주문 수량
+    "menuId": "string",
+    "quantity": 1
   }
 ]</code></pre>
                     <h6>Response</h6>
@@ -164,32 +138,32 @@
 <!-- JavaScript to keep all accordion sections closed on load -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Find all elements with 'collapse' class and ensure they're collapsed
+        // 모든 collapse 요소를 찾고 접힌 상태로 유지
         const collapses = document.querySelectorAll('.collapse');
         collapses.forEach(collapse => {
-            collapse.classList.remove('show');  // Make sure they're collapsed
+            collapse.classList.remove('show');  // collapse 상태로 만들기
         });
-  
+
         const hash = window.location.hash;
-  
+
         if (hash) {
-            // Get the element by hash (e.g., #collapseGetAll)
+            // URL의 해시를 사용해 해당 섹션 열기
             const targetElement = document.querySelector(hash);
-  
+
             if (targetElement && targetElement.classList.contains('collapse')) {
-                // Open the collapse section
+                // 해당 섹션 열기
                 targetElement.classList.add('show');
                 
-                // Scroll to the opened section
+                // 해당 섹션으로 스크롤
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
     });
-  </script>
-  
-  <!-- Bootstrap JS, Popper.js, and jQuery -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  </body>
-  </html>
+</script>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
