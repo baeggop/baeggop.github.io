@@ -161,8 +161,15 @@
 
 </div>
 
+<!-- JavaScript to keep all accordion sections closed on load -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
+        // Find all elements with 'collapse' class and ensure they're collapsed
+        const collapses = document.querySelectorAll('.collapse');
+        collapses.forEach(collapse => {
+            collapse.classList.remove('show');  // Make sure they're collapsed
+        });
+  
         const hash = window.location.hash;
   
         if (hash) {
@@ -170,7 +177,7 @@
             const targetElement = document.querySelector(hash);
   
             if (targetElement && targetElement.classList.contains('collapse')) {
-                // Open the collapse
+                // Open the collapse section
                 targetElement.classList.add('show');
                 
                 // Scroll to the opened section
