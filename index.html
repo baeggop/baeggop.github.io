@@ -6,71 +6,71 @@
     <title>API Documentation Index</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <h1 class="text-center">API Documentation</h1>
+    <p class="text-center">Welcome to the API documentation index page. Select a section below to view the detailed documentation for each API group.</p>
 
-<div class="container mt-5">
-    <h1 class="text-center mb-4">API Documentation Index</h1>
-
-    <!-- Store API Summary -->
+    <!-- Store API Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h2>Store API</h2>
+            <h4>Store API</h4>
         </div>
         <div class="card-body">
             <p>Store API provides endpoints to manage store-related data, including fetching store details, managing tables, and interacting with menus.</p>
             <ul>
-                <li><a href="#getAll">1. GET /getAll</a> - 모든 가게 조회</li>
-                <li><a href="#search">2. GET /search</a> - 가게 검색</li>
-                <li><a href="#storeIdTables">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
-                <li><a href="#storeIdOrders">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
-                <li><a href="#tableIdOrders">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#storeIdMenus">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
-                <li><a href="#storeId">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
-                <li><a href="#postTables">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
-                <li><a href="#postMenuCategories">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
-                <li><a href="#postMenus">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
-                <li><a href="#postMenuOptions">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
+                <li><strong><a href="store.html#getAll">GET /getAll</a></strong> - Fetch all stores</li>
+                <li><strong><a href="store.html#search">GET /search</a></strong> - Search stores by name or address</li>
+                <li><strong><a href="store.html#storeIdTables">GET /:storeId/tables</a></strong> - Fetch tables and unpaid orders for a specific store</li>
+                <li><strong><a href="store.html#storeIdOrders">GET /:storeId/orders</a></strong> - Fetch unpaid orders for a store</li>
+                <li><strong><a href="store.html#tableIdOrders">GET /:tableId/orders</a></strong> - Fetch unpaid orders for a specific table</li>
+                <li><strong><a href="store.html#storeIdMenus">GET /:storeId/menus</a></strong> - Fetch menu and menu options for a store</li>
+                <li><strong><a href="store.html#storeId">GET /:storeId</a></strong> - Fetch store details and order information</li>
+                <li><strong><a href="store.html#postTables">POST /:storeId/tables</a></strong> - Create or update tables for a store</li>
+                <li><strong><a href="store.html#postMenuCategories">POST /:storeId/menu-categories</a></strong> - Add a new menu category to a store</li>
+                <li><strong><a href="store.html#postMenus">POST /:menuCateId/menus</a></strong> - Add a new menu to a menu category</li>
+                <li><strong><a href="store.html#postMenuOptions">POST /:menuId/menu-options</a></strong> - Add a new menu option to a menu</li>
             </ul>
             <a href="store.html" class="btn btn-primary">View Store API Documentation</a>
         </div>
     </div>
 
-    <!-- Order API Summary -->
+    <!-- Order API Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h2>Order API</h2>
+            <h4>Order API</h4>
         </div>
         <div class="card-body">
-            <p>Order API provides endpoints to manage order-related functionalities, such as fetching unpaid orders and creating new orders for tables.</p>
+            <p>Order API manages table orders, including creating orders and fetching unpaid orders for specific tables.</p>
             <ul>
-                <li><strong>GET /:tableId</strong> - Fetch unpaid orders for a specific table</li>
-                <li><strong>POST /:tableId</strong> - Create or update an order for a table</li>
+                <li><strong><a href="order.html#getTableOrders">GET /:tableId</a></strong> - Fetch unpaid orders for a specific table</li>
+                <li><strong><a href="order.html#postTableOrders">POST /:tableId</a></strong> - Create a new order for a table</li>
             </ul>
             <a href="order.html" class="btn btn-primary">View Order API Documentation</a>
         </div>
     </div>
 
-    <!-- Payment API Summary -->
+    <!-- Payment API Section -->
     <div class="card mb-4">
         <div class="card-header">
-            <h2>Payment API</h2>
+            <h4>Payment API</h4>
         </div>
         <div class="card-body">
-            <p>Payment API provides endpoints to update the payment status of orders, ensuring seamless transaction management.</p>
+            <p>Payment API updates the payment status of orders.</p>
             <ul>
-                <li><strong>PUT /:orderId</strong> - Update the payment status of an order</li>
+                <li><strong><a href="payment.html#putOrderPayment">PUT /:orderId</a></strong> - Update payment status for an order</li>
             </ul>
             <a href="payment.html" class="btn btn-primary">View Payment API Documentation</a>
         </div>
     </div>
-
 </div>
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm
