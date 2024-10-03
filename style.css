@@ -1,0 +1,19 @@
+pre code {
+    display: block;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre {
+    margin-bottom: 1.5rem;
+}
+.back-to-index {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
