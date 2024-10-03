@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book API 문서</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./style.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Book API 문서</h1>
+
+    <div class="back-to-index">
+        <a href="index.html" class="btn btn-secondary">Back to Index</a>
+    </div>
+
+    <!-- 목차 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>목차</h4>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li><a href="#collapsePostBooking" class="collapse-link">1. POST /:storeId</a> - 예약 생성 및 업데이트</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Accordion for each API section -->
+    <div class="accordion" id="apiAccordion">
+        <!-- POST /:storeId -->
+        <div class="card">
+            <div class="card-header" id="postBooking">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostBooking" aria-expanded="false" aria-controls="collapsePostBooking">
+                        1. POST /:storeId - 예약 생성 및 업데이트
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapsePostBooking" class="collapse" aria-labelledby="postBooking" data-parent="#apiAccordion">
+                <div class="card-body">
+                    <h6><strong>설명</strong>: 특정 가게에 예약을 생성하거나 기존 예약을 업데이트합니다.</h6>
+                    <h6>Request</h6>
+                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
+                    <h6>Body</h6>
+                    <pre><code>{
+  "id": "string",           // 예약 ID (기존 예약일 경우 제공)
+  "userEmail": "string",    // 사용자 이메일
+  "peopleCnt": 4,           // 예약 인원수
+  "bookDate": "string",     // 예약 날짜 (형식: YYYYMMDD)
+  "bookTime": "string"      // 예약 시간 (형식: HHMM)
+}</code></pre>
+                    <h6>Response</h6>
+                    <pre><code>{
+  "message": "Booking saved successfully"
+}</code></pre>
+                    <h6>Error Responses</h6>
+                    <pre><code>{
+  "error": "Failed to save Booking"
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- JavaScript to keep all accordion sections closed on load -->
+<script src="./script.js"></script>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
