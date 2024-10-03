@@ -43,7 +43,7 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#collapsePutOrderPayment">1. PUT /:orderId</a> - 주문 결제 상태 업데이트</li>
+                <li><a href="#collapsePutOrderPayment" class="collapse-link">1. PUT /:orderId</a> - 주문 결제 상태 업데이트</li>
             </ul>
         </div>
     </div>
@@ -111,6 +111,19 @@
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // 클릭 시 해당 섹션 열기
+        const collapseLinks = document.querySelectorAll('.collapse-link');
+        collapseLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement && targetElement.classList.contains('collapse')) {
+                    targetElement.classList.add('show');
+                }
+            });
+        });
     });
 </script>
 

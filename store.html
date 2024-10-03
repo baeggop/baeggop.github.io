@@ -60,17 +60,17 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#getAll">1. GET /getAll</a> - 모든 가게 조회</li>
-                <li><a href="#search">2. GET /search</a> - 가게 검색</li>
-                <li><a href="#storeIdTables">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
-                <li><a href="#storeIdOrders">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
-                <li><a href="#tableIdOrders">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#storeIdMenus">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
-                <li><a href="#storeId">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
-                <li><a href="#postTables">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
-                <li><a href="#postMenuCategories">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
-                <li><a href="#postMenus">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
-                <li><a href="#postMenuOptions">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
+                <li><a href="#getAll" class="collapse-link">1. GET /getAll</a> - 모든 가게 조회</li>
+                <li><a href="#search" class="collapse-link">2. GET /search</a> - 가게 검색</li>
+                <li><a href="#storeIdTables" class="collapse-link">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
+                <li><a href="#storeIdOrders" class="collapse-link">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
+                <li><a href="#tableIdOrders" class="collapse-link">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
+                <li><a href="#storeIdMenus" class="collapse-link">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
+                <li><a href="#storeId" class="collapse-link">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
+                <li><a href="#postTables" class="collapse-link">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
+                <li><a href="#postMenuCategories" class="collapse-link">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
+                <li><a href="#postMenus" class="collapse-link">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
+                <li><a href="#postMenuOptions" class="collapse-link">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
             </ul>
         </div>
     </div>
@@ -549,26 +549,39 @@
 <!-- JavaScript to keep all accordion sections closed on load -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-      // Find all elements with 'collapse' class and ensure they're collapsed
+      // 모든 collapse 요소를 찾고 접힌 상태로 유지
       const collapses = document.querySelectorAll('.collapse');
       collapses.forEach(collapse => {
-          collapse.classList.remove('show');  // Make sure they're collapsed
+          collapse.classList.remove('show');  // collapse 상태로 만들기
       });
 
       const hash = window.location.hash;
 
       if (hash) {
-          // Get the element by hash (e.g., #collapseGetAll)
+          // URL의 해시를 사용해 해당 섹션 열기
           const targetElement = document.querySelector(hash);
 
           if (targetElement && targetElement.classList.contains('collapse')) {
-              // Open the collapse section
+              // 해당 섹션 열기
               targetElement.classList.add('show');
               
-              // Scroll to the opened section
+              // 해당 섹션으로 스크롤
               targetElement.scrollIntoView({ behavior: 'smooth' });
           }
       }
+
+      // 클릭 시 해당 섹션 열기
+      const collapseLinks = document.querySelectorAll('.collapse-link');
+      collapseLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+              const targetId = this.getAttribute('href');
+              const targetElement = document.querySelector(targetId);
+              
+              if (targetElement && targetElement.classList.contains('collapse')) {
+                  targetElement.classList.add('show');
+              }
+          });
+      });
   });
 </script>
 
