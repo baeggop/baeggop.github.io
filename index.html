@@ -20,12 +20,17 @@
         <div class="card-body">
             <p>Store API provides endpoints to manage store-related data, including fetching store details, managing tables, and interacting with menus.</p>
             <ul>
-                <li><strong>GET /getAll</strong> - Fetch all stores</li>
-                <li><strong>GET /search</strong> - Search stores by name or address</li>
-                <li><strong>GET /:storeId/tables</strong> - Fetch tables and unpaid orders for a specific store</li>
-                <li><strong>GET /:storeId/orders</strong> - Fetch unpaid orders for a store</li>
-                <li><strong>POST /:storeId/tables</strong> - Create or update tables for a store</li>
-                <li><strong>POST /:storeId/menu-categories</strong> - Add a new menu category to a store</li>
+                <li><a href="#getAll">1. GET /getAll</a> - 모든 가게 조회</li>
+                <li><a href="#search">2. GET /search</a> - 가게 검색</li>
+                <li><a href="#storeIdTables">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
+                <li><a href="#storeIdOrders">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
+                <li><a href="#tableIdOrders">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
+                <li><a href="#storeIdMenus">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
+                <li><a href="#storeId">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
+                <li><a href="#postTables">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
+                <li><a href="#postMenuCategories">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
+                <li><a href="#postMenus">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
+                <li><a href="#postMenuOptions">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
             </ul>
             <a href="store.html" class="btn btn-primary">View Store API Documentation</a>
         </div>
