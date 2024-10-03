@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment API Documentation</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for code blocks -->
+    <style>
+        pre code {
+            display: block;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            color: #333;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        pre {
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Payment API Documentation</h1>
+
+    <!-- 기본 정보 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>기본 정보</h4>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li><strong>Base URL</strong>: /payment</li>
+                <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 목차 -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h4>목차</h4>
+        </div>
+        <div class="card-body">
+            <ul>
+                <li><a href="#updatePayment">1. PUT /:orderId</a> - 특정 주문의 결제 상태 업데이트</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Accordion for each API section -->
+    <div class="accordion" id="apiAccordion">
+
+        <!-- PUT /:orderId -->
+        <div class="card">
+            <div class="card-header" id="updatePayment">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseUpdatePayment" aria-expanded="true" aria-controls="collapseUpdatePayment">
+                        1. PUT /:orderId - 특정 주문의 결제 상태 업데이트
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseUpdatePayment" class="collapse show" aria-labelledby="updatePayment" data-parent="#apiAccordion">
+                <div class="card-body">
+                    <h6><strong>설명</strong>: 특정 주문의 결제 상태를 'Y'로 업데이트합니다.</h6>
+                    <h6>Request</h6>
+                    <pre><code>orderId: 주문 ID (string, 필수)</code></pre>
+                    <h6>Response</h6>
+                    <pre><code>{
+  "message": "Order payment updated successfully",
+  "order": {
+    "id": "string",      // 주문 ID
+    "isPaid": "Y"        // 결제 여부 ('Y' 또는 'N')
+  }
+}</code></pre>
+                    <h6>Error Responses</h6>
+                    <pre><code>{
+  "error": "Order not found"
+}</code></pre>
+                    <pre><code>{
+  "error": "Failed to update order payment status"
+}</code></pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Back to index button -->
+    <div class="mt-4">
+        <a href="index.html" class="btn btn-secondary">Back to Index</a>
+    </div>
+
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
