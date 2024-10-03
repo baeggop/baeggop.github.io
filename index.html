@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Documentation Index</title>
+    <title>API 문서 인덱스</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
@@ -14,8 +14,8 @@
 </head>
 <body>
 <div class="container">
-    <h1 class="text-center">API Documentation</h1>
-    <p class="text-center">Welcome to the API documentation index page. Select a section below to view the detailed documentation for each API group.</p>
+    <h1 class="text-center">API 문서</h1>
+    <p class="text-center">API 문서 인덱스 페이지에 오신 것을 환영합니다. 아래에서 각 API 그룹에 대한 자세한 문서를 선택할 수 있습니다.</p>
 
     <!-- Store API Section -->
     <div class="card mb-4">
@@ -23,21 +23,21 @@
             <h4>Store API</h4>
         </div>
         <div class="card-body">
-            <p>Store API provides endpoints to manage store-related data, including fetching store details, managing tables, and interacting with menus.</p>
+            <p>Store API는 가게 세부 정보를 가져오거나, 테이블을 관리하며, 메뉴와 상호작용할 수 있는 엔드포인트를 제공합니다.</p>
             <ul>
-                <li><strong><a href="store.html#getAll">GET /getAll</a></strong> - Fetch all stores</li>
-                <li><strong><a href="store.html#search">GET /search</a></strong> - Search stores by name or address</li>
-                <li><strong><a href="store.html#storeIdTables">GET /:storeId/tables</a></strong> - Fetch tables and unpaid orders for a specific store</li>
-                <li><strong><a href="store.html#storeIdOrders">GET /:storeId/orders</a></strong> - Fetch unpaid orders for a store</li>
-                <li><strong><a href="store.html#tableIdOrders">GET /:tableId/orders</a></strong> - Fetch unpaid orders for a specific table</li>
-                <li><strong><a href="store.html#storeIdMenus">GET /:storeId/menus</a></strong> - Fetch menu and menu options for a store</li>
-                <li><strong><a href="store.html#storeId">GET /:storeId</a></strong> - Fetch store details and order information</li>
-                <li><strong><a href="store.html#postTables">POST /:storeId/tables</a></strong> - Create or update tables for a store</li>
-                <li><strong><a href="store.html#postMenuCategories">POST /:storeId/menu-categories</a></strong> - Add a new menu category to a store</li>
-                <li><strong><a href="store.html#postMenus">POST /:menuCateId/menus</a></strong> - Add a new menu to a menu category</li>
-                <li><strong><a href="store.html#postMenuOptions">POST /:menuId/menu-options</a></strong> - Add a new menu option to a menu</li>
+                <li><strong><a href="store.html#collapseGetAll">GET /getAll</a></strong> - 모든 가게 조회</li>
+                <li><strong><a href="store.html#collapseSearch">GET /search</a></strong> - 이름 또는 주소로 가게 검색</li>
+                <li><strong><a href="store.html#collapseStoreIdTables">GET /:storeId/tables</a></strong> - 특정 가게의 테이블 및 미결제 주문 조회</li>
+                <li><strong><a href="store.html#collapseStoreIdOrders">GET /:storeId/orders</a></strong> - 특정 가게의 미결제 주문 조회</li>
+                <li><strong><a href="store.html#collapseTableIdOrders">GET /:tableId/orders</a></strong> - 특정 테이블의 미결제 주문 조회</li>
+                <li><strong><a href="store.html#collapseStoreIdMenus">GET /:storeId/menus</a></strong> - 특정 가게의 메뉴 및 메뉴 옵션 조회</li>
+                <li><strong><a href="store.html#collapseStoreId">GET /:storeId</a></strong> - 특정 가게의 세부 정보 및 주문 정보 조회</li>
+                <li><strong><a href="store.html#collapsePostTables">POST /:storeId/tables</a></strong> - 가게의 테이블 생성 및 수정</li>
+                <li><strong><a href="store.html#collapsePostMenuCategories">POST /:storeId/menu-categories</a></strong> - 가게에 새로운 메뉴 카테고리 추가</li>
+                <li><strong><a href="store.html#collapsePostMenus">POST /:menuCateId/menus</a></strong> - 메뉴 카테고리에 새로운 메뉴 추가</li>
+                <li><strong><a href="store.html#collapsePostMenuOptions">POST /:menuId/menu-options</a></strong> - 메뉴에 새로운 옵션 추가</li>
             </ul>
-            <a href="store.html" class="btn btn-primary">View Store API Documentation</a>
+            <a href="store.html" class="btn btn-primary">Store API 문서 보기</a>
         </div>
     </div>
 
@@ -47,12 +47,12 @@
             <h4>Order API</h4>
         </div>
         <div class="card-body">
-            <p>Order API manages table orders, including creating orders and fetching unpaid orders for specific tables.</p>
+            <p>Order API는 테이블 주문을 관리하며, 특정 테이블에 대한 주문 생성 및 미결제 주문을 조회할 수 있습니다.</p>
             <ul>
-                <li><strong><a href="order.html#getTableOrders">GET /:tableId</a></strong> - Fetch unpaid orders for a specific table</li>
-                <li><strong><a href="order.html#postTableOrders">POST /:tableId</a></strong> - Create a new order for a table</li>
+                <li><strong><a href="order.html#collapseGetTableOrders">GET /:tableId</a></strong> - 특정 테이블의 미결제 주문 조회</li>
+                <li><strong><a href="order.html#collapsePostTableOrders">POST /:tableId</a></strong> - 테이블에 새로운 주문 생성</li>
             </ul>
-            <a href="order.html" class="btn btn-primary">View Order API Documentation</a>
+            <a href="order.html" class="btn btn-primary">Order API 문서 보기</a>
         </div>
     </div>
 
@@ -62,15 +62,18 @@
             <h4>Payment API</h4>
         </div>
         <div class="card-body">
-            <p>Payment API updates the payment status of orders.</p>
+            <p>Payment API는 주문의 결제 상태를 업데이트할 수 있습니다.</p>
             <ul>
-                <li><strong><a href="payment.html#putOrderPayment">PUT /:orderId</a></strong> - Update payment status for an order</li>
+                <li><strong><a href="payment.html#collapsePutOrderPayment">PUT /:orderId</a></strong> - 주문 결제 상태 업데이트</li>
             </ul>
-            <a href="payment.html" class="btn btn-primary">View Payment API Documentation</a>
+            <a href="payment.html" class="btn btn-primary">Payment API 문서 보기</a>
         </div>
     </div>
 </div>
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
