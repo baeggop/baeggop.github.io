@@ -547,21 +547,22 @@
 </div>
 
 <script>
-  // Get the hash value from the URL
-  const hash = window.location.hash;
+  document.addEventListener("DOMContentLoaded", function () {
+      const hash = window.location.hash;
 
-  if (hash) {
-      // Find the accordion collapse element based on the hash
-      const target = document.querySelector(hash);
+      if (hash) {
+          // Get the element by hash (e.g., #collapseGetAll)
+          const targetElement = document.querySelector(hash);
 
-      if (target) {
-          // Open the specific accordion section
-          const collapseElement = target.querySelector('.collapse');
-          if (collapseElement) {
-              collapseElement.classList.add('show');
+          if (targetElement && targetElement.classList.contains('collapse')) {
+              // Open the collapse
+              targetElement.classList.add('show');
+              
+              // Scroll to the opened section
+              targetElement.scrollIntoView({ behavior: 'smooth' });
           }
       }
-  }
+  });
 </script>
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
