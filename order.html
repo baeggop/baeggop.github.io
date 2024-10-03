@@ -43,8 +43,8 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#collapseGetTableOrders">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#collapsePostTableOrders">2. POST /:tableId</a> - 테이블에 새로운 주문 추가</li>
+                <li><a href="#collapseGetTableOrders" class="collapse-link">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
+                <li><a href="#collapsePostTableOrders" class="collapse-link">2. POST /:tableId</a> - 테이블에 새로운 주문 추가</li>
             </ul>
         </div>
     </div>
@@ -136,6 +136,7 @@
 </div>
 
 <!-- JavaScript to keep all accordion sections closed on load -->
+<!-- JavaScript to keep all accordion sections closed on load -->
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // 모든 collapse 요소를 찾고 접힌 상태로 유지
@@ -158,6 +159,19 @@
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // 클릭 시 해당 섹션 열기
+        const collapseLinks = document.querySelectorAll('.collapse-link');
+        collapseLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement && targetElement.classList.contains('collapse')) {
+                    targetElement.classList.add('show');
+                }
+            });
+        });
     });
 </script>
 
