@@ -3,530 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Store API 명세서</title>
+    <title>API Documentation Index</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS for code block styling -->
-    <style>
-      pre code {
-          background-color: #f8f9fa; /* 연한 회색 배경 */
-          padding: 10px;             /* 코드 블록에 패딩 추가 */
-          display: block;            /* 코드 블록을 블록 요소로 처리 */
-          border-radius: 5px;        /* 둥근 모서리 */
-          border: 1px solid #ddd;    /* 얇은 테두리 */
-          white-space: pre-wrap;     /* 줄바꿈 허용 */
-          font-family: monospace;    /* 고정폭 글꼴 적용 */
-      }
-  </style>
 </head>
 <body>
 
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Store API 명세서</h1>
+    <h1 class="text-center mb-4">API Documentation Index</h1>
 
-    <!-- 기본 정보 -->
+    <!-- Store API Summary -->
     <div class="card mb-4">
         <div class="card-header">
-            <h4>기본 정보</h4>
+            <h2>Store API</h2>
         </div>
         <div class="card-body">
+            <p>Store API provides endpoints to manage store-related data, including fetching store details, managing tables, and interacting with menus.</p>
             <ul>
-                <li><strong>Base URL</strong>: /store</li>
-                <li><strong>Authentication</strong>: Optional (Depending on your implementation)</li>
+                <li><strong>GET /getAll</strong> - Fetch all stores</li>
+                <li><strong>GET /search</strong> - Search stores by name or address</li>
+                <li><strong>GET /:storeId/tables</strong> - Fetch tables and unpaid orders for a specific store</li>
+                <li><strong>GET /:storeId/orders</strong> - Fetch unpaid orders for a store</li>
+                <li><strong>POST /:storeId/tables</strong> - Create or update tables for a store</li>
+                <li><strong>POST /:storeId/menu-categories</strong> - Add a new menu category to a store</li>
             </ul>
+            <a href="store.html" class="btn btn-primary">View Store API Documentation</a>
         </div>
     </div>
 
-    <!-- 목차 -->
+    <!-- Order API Summary -->
     <div class="card mb-4">
         <div class="card-header">
-            <h4>목차</h4>
+            <h2>Order API</h2>
         </div>
         <div class="card-body">
+            <p>Order API provides endpoints to manage order-related functionalities, such as fetching unpaid orders and creating new orders for tables.</p>
             <ul>
-                <li><a href="#getAll">1. GET /getAll</a> - 모든 가게 조회</li>
-                <li><a href="#search">2. GET /search</a> - 가게 검색</li>
-                <li><a href="#storeIdTables">3. GET /:storeId/tables</a> - 특정 가게의 테이블 정보 조회</li>
-                <li><a href="#storeIdOrders">4. GET /:storeId/orders</a> - 특정 가게의 미결제 주문 조회</li>
-                <li><a href="#tableIdOrders">5. GET /:tableId/orders</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#storeIdMenus">6. GET /:storeId/menus</a> - 특정 가게의 메뉴 조회</li>
-                <li><a href="#storeId">7. GET /:storeId</a> - 특정 가게의 상세 정보 조회</li>
-                <li><a href="#postTables">8. POST /:storeId/tables</a> - 테이블 정보 수정 및 등록</li>
-                <li><a href="#postMenuCategories">9. POST /:storeId/menu-categories</a> - 메뉴 카테고리 추가</li>
-                <li><a href="#postMenus">10. POST /:menuCateId/menus</a> - 메뉴 추가</li>
-                <li><a href="#postMenuOptions">11. POST /:menuId/menu-options</a> - 메뉴 옵션 추가</li>
+                <li><strong>GET /:tableId</strong> - Fetch unpaid orders for a specific table</li>
+                <li><strong>POST /:tableId</strong> - Create or update an order for a table</li>
             </ul>
+            <a href="order.html" class="btn btn-primary">View Order API Documentation</a>
         </div>
     </div>
 
-    <!-- Accordion for each API section -->
-    <div class="accordion" id="apiAccordion">
-
-        <!-- GET /getAll -->
-        <div class="card">
-            <div class="card-header" id="getAll">
-                <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGetAll" aria-expanded="true" aria-controls="collapseGetAll">
-                        1. GET /getAll - 모든 가게 조회
-                    </button>
-                </h5>
-            </div>
-
-            <div id="collapseGetAll" class="collapse show" aria-labelledby="getAll" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 모든 가게 정보를 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <p>없음</p>
-                    <h6>Response</h6>
-                    <pre><code>[
-  {
-    "id": "string",
-    "name": "string",
-    "address": "string",
-    "lat": "string",
-    "long": "string",
-    "tel": "string",
-    "createdAt": "date-time",
-    "updatedAt": "date-time"
-  }
-]</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Internal server error"
-}</code></pre>
-                </div>
-            </div>
+    <!-- Payment API Summary -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h2>Payment API</h2>
         </div>
-
-        <!-- GET /search -->
-        <div class="card">
-            <div class="card-header" id="search">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSearch" aria-expanded="false" aria-controls="collapseSearch">
-                        2. GET /search - 가게 검색
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseSearch" class="collapse" aria-labelledby="search" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 가게 이름 또는 주소로 검색합니다.</h6>
-                    <h6>Request</h6>
-                    <p>Query Parameters:</p>
-                    <pre><code>query: 검색어 (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>[
-  {
-    "id": "string",
-    "name": "string",
-    "address": "string",
-    "lat": "string",
-    "long": "string",
-    "tel": "string",
-    "createdAt": "date-time",
-    "updatedAt": "date-time"
-  }
-]</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Invalid query parameter"
-}</code></pre>
-                </div>
-            </div>
+        <div class="card-body">
+            <p>Payment API provides endpoints to update the payment status of orders, ensuring seamless transaction management.</p>
+            <ul>
+                <li><strong>PUT /:orderId</strong> - Update the payment status of an order</li>
+            </ul>
+            <a href="payment.html" class="btn btn-primary">View Payment API Documentation</a>
         </div>
-
-        <!-- GET /:storeId/tables -->
-        <div class="card">
-          <div class="card-header" id="storeIdTables">
-              <h5 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTables" aria-expanded="false" aria-controls="collapseTables">
-                      3. GET /:storeId/tables - 특정 가게의 테이블 정보 조회
-                  </button>
-              </h5>
-          </div>
-          <div id="collapseTables" class="collapse" aria-labelledby="storeIdTables" data-parent="#apiAccordion">
-              <div class="card-body">
-                  <h6><strong>설명</strong>: 특정 가게의 테이블 정보 및 관련 미결제 주문 조회</h6>
-                  <h6>Request</h6>
-                  <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                  <h6>Response</h6>
-                  <pre><code>{
-        "id": "string",            // Store ID
-        "name": "string",          // Store 이름
-        "spaces": [
-          {
-            "id": "string",        // Space ID
-            "name": "string",      // Space 이름
-            "tables": [
-              {
-                "id": "string",    // Table ID
-                "name": "string",  // 테이블 이름
-                "orders": [
-                  {
-                    "id": "string",           // Order ID
-                    "isPaid": "N",            // 결제 여부 ('Y' 또는 'N')
-                    "orderDetails": [
-                      {
-                        "id": "string",       // OrderDetail ID
-                        "menu": {
-                          "id": "string",     // 메뉴 ID
-                          "name": "string"    // 메뉴 이름
-                        }
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }</code></pre>
-      <h6>Error Responses</h6>
-      <pre><code>{
-"error": "Store not found"
-}</code></pre>
-              </div>
-          </div>
-      </div>
-
-        <!-- GET /:storeId/orders -->
-        <div class="card">
-            <div class="card-header" id="storeIdOrders">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOrders" aria-expanded="false" aria-controls="collapseOrders">
-                        4. GET /:storeId/orders - 특정 가게의 미결제 주문 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseOrders" class="collapse" aria-labelledby="storeIdOrders" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게에서 미결제 상태인 모든 주문을 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>[
-  {
-    "id": "string",
-    "isPaid": "N",
-    "table": {
-      "id": "string",
-      "name": "string"
-    },
-    "orderDetails": [
-      {
-        "id": "string",
-        "menu": {
-          "id": "string",
-          "name": "string"
-        }
-      }
-    ]
-  }
-]</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "No active orders found for this store"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- GET /:tableId/orders -->
-        <div class="card">
-            <div class="card-header" id="tableIdOrders">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTableOrders" aria-expanded="false" aria-controls="collapseTableOrders">
-                        5. GET /:tableId/orders - 특정 테이블의 미결제 주문 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTableOrders" class="collapse" aria-labelledby="tableIdOrders" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 테이블의 미결제 주문을 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "isPaid": "N",
-  "orderDetails": [
-    {
-      "id": "string",
-      "menu": {
-        "id": "string",
-        "name": "string"
-      }
-    }
-  ]
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "No active order found for this table"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- GET /:storeId/menus -->
-        <div class="card">
-            <div class="card-header" id="storeIdMenus">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseMenus" aria-expanded="false" aria-controls="collapseMenus">
-                        6. GET /:storeId/menus - 특정 가게의 메뉴 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseMenus" class="collapse" aria-labelledby="storeIdMenus" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게의 메뉴 및 메뉴 옵션을 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "menuCates": [
-    {
-      "id": "string",
-      "name": "string",
-      "menus": [
-        {
-          "id": "string",
-          "name": "string",
-          "price": 0,
-          "menuOptions": [
-            {
-              "id": "string",
-              "name": "string",
-              "price": 0,
-              "isRequired": "Y"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Store not found"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- GET /:storeId -->
-        <div class="card">
-            <div class="card-header" id="storeId">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseStoreId" aria-expanded="false" aria-controls="collapseStoreId">
-                        7. GET /:storeId - 특정 가게의 상세 정보 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseStoreId" class="collapse" aria-labelledby="storeId" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게의 세부 정보 및 주문 정보를 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "spaces": [
-    {
-      "id": "string",
-      "name": "string",
-      "tables": [
-        {
-          "id": "string",
-          "name": "string",
-          "orders": [
-            {
-              "id": "string",
-              "isPaid": "N",
-              "orderDetails": [
-                {
-                  "id": "string",
-                  "menu": {
-                    "id": "string",
-                    "name": "string"
-                  }
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    }
-  ],
-  "menuCates": [
-    {
-      "id": "string",
-      "name": "string",
-      "menus": [
-        {
-          "id": "string",
-          "name": "string",
-          "price": 0,
-          "menuOptions": [
-            {
-              "id": "string",
-              "name": "string",
-              "price": 0,
-              "isRequired": "Y"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Store not found"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- POST /:storeId/tables -->
-        <div class="card">
-            <div class="card-header" id="postTables">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostTables" aria-expanded="false" aria-controls="collapsePostTables">
-                        8. POST /:storeId/tables - 테이블 정보 수정 및 등록
-                    </button>
-                </h5>
-            </div>
-            <div id="collapsePostTables" class="collapse" aria-labelledby="postTables" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게의 테이블 정보를 수정 또는 등록합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Body</h6>
-                    <pre><code>[
-  {
-    "id": "string",
-    "left": 0,
-    "top": 0,
-    "width": 100,
-    "height": 100,
-    "name": "string",
-    "color": "string",
-    "spaceId": "string"
-  }
-]</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "message": "Tables saved successfully"
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Failed to save tables"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- POST /:storeId/menu-categories -->
-        <div class="card">
-            <div class="card-header" id="postMenuCategories">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostMenuCategories" aria-expanded="false" aria-controls="collapsePostMenuCategories">
-                        9. POST /:storeId/menu-categories - 메뉴 카테고리 추가
-                    </button>
-                </h5>
-            </div>
-            <div id="collapsePostMenuCategories" class="collapse" aria-labelledby="postMenuCategories" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게에 새로운 메뉴 카테고리를 추가합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Body</h6>
-                    <pre><code>{
-  "name": "string"
-}</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "name": "string"
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Failed to create menu category"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- POST /:menuCateId/menus -->
-        <div class="card">
-            <div class="card-header" id="postMenus">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostMenus" aria-expanded="false" aria-controls="collapsePostMenus">
-                        10. POST /:menuCateId/menus - 메뉴 추가
-                    </button>
-                </h5>
-            </div>
-            <div id="collapsePostMenus" class="collapse" aria-labelledby="postMenus" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 메뉴 카테고리에 새로운 메뉴를 추가합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>menuCateId: 메뉴 카테고리 ID (string, 필수)</code></pre>
-                    <h6>Body</h6>
-                    <pre><code>{
-  "name": "string",
-  "price": 0
-}</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "name": "string",
-  "price": 0
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Failed to create menu"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- POST /:menuId/menu-options -->
-        <div class="card">
-            <div class="card-header" id="postMenuOptions">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostMenuOptions" aria-expanded="false" aria-controls="collapsePostMenuOptions">
-                        11. POST /:menuId/menu-options - 메뉴 옵션 추가
-                    </button>
-                </h5>
-            </div>
-            <div id="collapsePostMenuOptions" class="collapse" aria-labelledby="postMenuOptions" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 메뉴에 새로운 옵션을 추가합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>menuId: 메뉴 ID (string, 필수)</code></pre>
-                    <h6>Body</h6>
-                    <pre><code>{
-  "name": "string",
-  "price": 0,
-  "isRequired": "N"
-}</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "name": "string",
-  "price": 0,
-  "isRequired": "N",
-  "menuId": "string"
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "Failed to create menu option"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 </div>
@@ -535,5 +66,6 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </body>
 </html>
