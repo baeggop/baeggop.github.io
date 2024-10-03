@@ -39,7 +39,7 @@
     <div class="back-to-index">
       <a href="index.html" class="btn btn-secondary">Back to Index</a>
   </div>
-  
+
     <!-- 기본 정보 -->
     <div class="card mb-4">
         <div class="card-header">
@@ -545,6 +545,24 @@
     </div>
 
 </div>
+
+<script>
+  // Get the hash value from the URL
+  const hash = window.location.hash;
+
+  if (hash) {
+      // Find the accordion collapse element based on the hash
+      const target = document.querySelector(hash);
+
+      if (target) {
+          // Open the specific accordion section
+          const collapseElement = target.querySelector('.collapse');
+          if (collapseElement) {
+              collapseElement.classList.add('show');
+          }
+      }
+  }
+</script>
 
 <!-- Bootstrap JS, Popper.js, and jQuery -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
