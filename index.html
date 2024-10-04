@@ -28,8 +28,6 @@
                 <li><strong><a href="store.html#collapseGetAll">GET /getAll</a></strong> - 모든 가게 조회</li>
                 <li><strong><a href="store.html#collapseSearch">GET /search</a></strong> - 이름 또는 주소로 가게 검색</li>
                 <li><strong><a href="store.html#collapseStoreIdTables">GET /:storeId/tables</a></strong> - 특정 가게의 테이블 및 미결제 주문 조회</li>
-                <li><strong><a href="store.html#collapseStoreIdOrders">GET /:storeId/orders</a></strong> - 특정 가게의 미결제 주문 조회</li>
-                <li><strong><a href="store.html#collapseTableIdOrders">GET /:tableId/orders</a></strong> - 특정 테이블의 미결제 주문 조회</li>
                 <li><strong><a href="store.html#collapseStoreIdMenus">GET /:storeId/menus</a></strong> - 특정 가게의 메뉴 및 메뉴 옵션 조회</li>
                 <li><strong><a href="store.html#collapseStoreId">GET /:storeId</a></strong> - 특정 가게의 세부 정보 및 주문 정보 조회</li>
                 <li><strong><a href="store.html#collapsePostTables">POST /:storeId/tables</a></strong> - 가게의 테이블 생성 및 수정</li>
@@ -49,6 +47,7 @@
         <div class="card-body">
             <p>Order API는 테이블 주문을 관리하며, 특정 테이블에 대한 주문 생성 및 미결제 주문을 조회할 수 있습니다.</p>
             <ul>
+                <li><strong><a href="order.html#collapseGetStoreOrders">GET /:storeId</a></strong> - 특정 가게의 미결제 주문 조회</li>
                 <li><strong><a href="order.html#collapseGetTableOrders">GET /:tableId</a></strong> - 특정 테이블의 미결제 주문 조회</li>
                 <li><strong><a href="order.html#collapsePostTableOrders">POST /:tableId</a></strong> - 테이블에 새로운 주문 생성</li>
             </ul>

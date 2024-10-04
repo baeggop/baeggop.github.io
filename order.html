@@ -23,25 +23,69 @@
         </div>
         <div class="card-body">
             <ul>
-                <li><a href="#collapseGetTableOrders" class="collapse-link">1. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
-                <li><a href="#collapsePostTableOrders" class="collapse-link">2. POST /:tableId</a> - 테이블에 새로운 주문 추가</li>
+                <li><a href="#collapseGetStoreOrders" class="collapse-link">1. GET /:storeId</a> - 특정 가게의 미결제 주문 조회</li>
+                <li><a href="#collapseGetTableOrders" class="collapse-link">2. GET /:tableId</a> - 특정 테이블의 미결제 주문 조회</li>
+                <li><a href="#collapsePostTableOrders" class="collapse-link">3. POST /:tableId</a> - 테이블에 새로운 주문 추가</li>
             </ul>
         </div>
     </div>
 
     <!-- Accordion for each API section -->
     <div class="accordion" id="apiAccordion">
-        <!-- GET /:tableId -->
+
+        
+        <!-- GET /:storeId -->
         <div class="card">
-            <div class="card-header" id="getTableOrders">
+            <div class="card-header" id="storeIdOrders">
                 <h5 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseGetTableOrders" aria-expanded="false" aria-controls="collapseGetTableOrders">
-                        1. GET /:tableId - 특정 테이블의 미결제 주문 조회
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseGetStoreOrders" aria-expanded="false" aria-controls="collapseGetStoreOrders">
+                        1. GET /:storeId - 특정 가게의 미결제 주문 조회
                     </button>
                 </h5>
             </div>
+            <div id="collapseGetStoreOrders" class="collapse" aria-labelledby="storeIdOrders" data-parent="#apiAccordion">
+                <div class="card-body">
+                    <h6><strong>설명</strong>: 특정 가게에서 미결제 상태인 모든 주문을 조회합니다.</h6>
+                    <h6>Request</h6>
+                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
+                    <h6>Response</h6>
+                    <pre><code>[
+  {
+    "id": "string",
+    "isPaid": "N",
+    "table": {
+      "id": "string",
+      "name": "string"
+    },
+    "orderDetails": [
+      {
+        "id": "string",
+        "menu": {
+          "id": "string",
+          "name": "string"
+        }
+      }
+    ]
+  }
+]</code></pre>
+                    <h6>Error Responses</h6>
+                    <pre><code>{
+  "error": "No active orders found for this store"
+}</code></pre>
+                </div>
+            </div>
+        </div>
 
-            <div id="collapseGetTableOrders" class="collapse" aria-labelledby="getTableOrders" data-parent="#apiAccordion">
+        <!-- GET /:tableId -->
+        <div class="card">
+            <div class="card-header" id="tableIdOrders">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseGetTableOrders" aria-expanded="false" aria-controls="collapseGetTableOrders">
+                        2. GET /:tableId - 특정 테이블의 미결제 주문 조회
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseGetTableOrders" class="collapse" aria-labelledby="tableIdOrders" data-parent="#apiAccordion">
                 <div class="card-body">
                     <h6><strong>설명</strong>: 특정 테이블의 미결제 주문을 조회합니다.</h6>
                     <h6>Request</h6>
@@ -64,9 +108,6 @@
                     <pre><code>{
   "error": "No active order found for this table"
 }</code></pre>
-                    <pre><code>{
-  "error": "Failed to retrieve unpaid orders for the table"
-}</code></pre>
                 </div>
             </div>
         </div>
@@ -76,7 +117,7 @@
             <div class="card-header" id="postTableOrders">
                 <h5 class="mb-0">
                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapsePostTableOrders" aria-expanded="false" aria-controls="collapsePostTableOrders">
-                        2. POST /:tableId - 테이블에 새로운 주문 추가
+                        3. POST /:tableId - 테이블에 새로운 주문 추가
                     </button>
                 </h5>
             </div>

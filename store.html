@@ -63,7 +63,11 @@
     "address": "string",
     "lat": "string",
     "long": "string",
+    "start": "hh:mm",
+    "end": "hh:mm",
+    "break": "hh:mm",
     "tel": "string",
+    "info": "string",
     "createdAt": "date-time",
     "updatedAt": "date-time"
   }
@@ -99,7 +103,11 @@
     "address": "string",
     "lat": "string",
     "long": "string",
+    "start": "hh:mm",
+    "end": "hh:mm",
+    "break": "hh:mm",
     "tel": "string",
+    "info": "string",
     "createdAt": "date-time",
     "updatedAt": "date-time"
   }
@@ -129,14 +137,39 @@
                     <h6>Response</h6>
                     <pre><code>{
   "id": "string",
+  "name": "string",
+  "address": "string",
+  "lat": "string",
+  "long": "string",
+  "start": "hh:mm",
+  "end": "hh:mm",
+  "break": "hh:mm",
+  "tel": "string",
+  "info": "string",
+  "createdAt": "date-time",
+  "updatedAt": "date-time"
   "spaces": [
     {
       "id": "string",
       "name": "string",
+      "createdAt": "date-time",
+      "updatedAt": "date-time",
+      "storeId": "string",
       "tables": [
         {
           "id": "string",
           "name": "string",
+          "top": int,
+          "left": int,
+          "right": int,
+          "bottom": int,
+          "width": int,
+          "height": int,
+          "color": "string",
+          "useFlag": "Y",
+          "createdAt": "date-time",
+          "updatedAt": "date-time",
+          "spaceId": "string",
           "orders": [
             {
               "id": "string",
@@ -160,84 +193,6 @@
                     <h6>Error Responses</h6>
                     <pre><code>{
   "error": "Store not found"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- GET /:storeId/orders -->
-        <div class="card">
-            <div class="card-header" id="storeIdOrders">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseStoreIdOrders" aria-expanded="false" aria-controls="collapseStoreIdOrders">
-                        4. GET /:storeId/orders - 특정 가게의 미결제 주문 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseStoreIdOrders" class="collapse" aria-labelledby="storeIdOrders" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 가게에서 미결제 상태인 모든 주문을 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>storeId: 가게 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>[
-  {
-    "id": "string",
-    "isPaid": "N",
-    "table": {
-      "id": "string",
-      "name": "string"
-    },
-    "orderDetails": [
-      {
-        "id": "string",
-        "menu": {
-          "id": "string",
-          "name": "string"
-        }
-      }
-    ]
-  }
-]</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "No active orders found for this store"
-}</code></pre>
-                </div>
-            </div>
-        </div>
-
-        <!-- GET /:tableId/orders -->
-        <div class="card">
-            <div class="card-header" id="tableIdOrders">
-                <h5 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTableIdOrders" aria-expanded="false" aria-controls="collapseTableIdOrders">
-                        5. GET /:tableId/orders - 특정 테이블의 미결제 주문 조회
-                    </button>
-                </h5>
-            </div>
-            <div id="collapseTableIdOrders" class="collapse" aria-labelledby="tableIdOrders" data-parent="#apiAccordion">
-                <div class="card-body">
-                    <h6><strong>설명</strong>: 특정 테이블의 미결제 주문을 조회합니다.</h6>
-                    <h6>Request</h6>
-                    <pre><code>tableId: 테이블 ID (string, 필수)</code></pre>
-                    <h6>Response</h6>
-                    <pre><code>{
-  "id": "string",
-  "isPaid": "N",
-  "orderDetails": [
-    {
-      "id": "string",
-      "menu": {
-        "id": "string",
-        "name": "string"
-      }
-    }
-  ]
-}</code></pre>
-                    <h6>Error Responses</h6>
-                    <pre><code>{
-  "error": "No active order found for this table"
 }</code></pre>
                 </div>
             </div>
