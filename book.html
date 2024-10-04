@@ -23,6 +23,9 @@
         </div>
         <div class="card-body">
             <ul>
+                <li><strong>Base URL</strong>: /book</li>
+            </ul>
+            <ul>
                 <li><a href="#collapsePostBooking" class="collapse-link">1. POST /:storeId</a> - 예약 생성 및 업데이트</li>
             </ul>
         </div>
@@ -49,7 +52,7 @@
                     <pre><code>{
   "id": "string",           // 예약 ID (기존 예약일 경우 제공)
   "userEmail": "string",    // 사용자 이메일
-  "peopleCnt": 4,           // 예약 인원수
+  "peopleCnt": int,         // 예약 인원수
   "bookDate": "string",     // 예약 날짜 (형식: YYYYMMDD)
   "bookTime": "string"      // 예약 시간 (형식: HHMM)
 }</code></pre>
