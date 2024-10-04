@@ -23,6 +23,9 @@
             <h4>Store API</h4>
         </div>
         <div class="card-body">
+            <ul>
+                <li><strong>Base URL</strong>: /store</li>
+            </ul>
             <p>Store API는 가게 세부 정보를 가져오거나, 테이블을 관리하며, 메뉴와 상호작용할 수 있는 엔드포인트를 제공합니다.</p>
             <ul>
                 <li><strong><a href="store.html#collapseGetAll">GET /getAll</a></strong> - 모든 가게 조회</li>
@@ -45,6 +48,9 @@
             <h4>Order API</h4>
         </div>
         <div class="card-body">
+            <ul>
+                <li><strong>Base URL</strong>: /order</li>
+            </ul>
             <p>Order API는 테이블 주문을 관리하며, 특정 테이블에 대한 주문 생성 및 미결제 주문을 조회할 수 있습니다.</p>
             <ul>
                 <li><strong><a href="order.html#collapseGetStoreOrders">GET /:storeId</a></strong> - 특정 가게의 미결제 주문 조회</li>
@@ -61,6 +67,9 @@
             <h4>Payment API</h4>
         </div>
         <div class="card-body">
+            <ul>
+                <li><strong>Base URL</strong>: /payment</li>
+            </ul>
             <p>Payment API는 주문의 결제 상태를 업데이트할 수 있습니다.</p>
             <ul>
                 <li><strong><a href="payment.html#collapsePutOrderPayment">PUT /:orderId</a></strong> - 주문 결제 상태 업데이트</li>
@@ -75,6 +84,9 @@
             <h4>Book API</h4>
         </div>
         <div class="card-body">
+            <ul>
+                <li><strong>Base URL</strong>: /book</li>
+            </ul>
             <p>Book API는 예약 관리를 위한 API입니다. 예약 생성 및 업데이트 기능을 제공합니다.</p>
             <ul>
                 <li><strong><a href="book.html#collapsePostBooking">POST /:storeId</a></strong> - 예약 생성 및 업데이트</li>
